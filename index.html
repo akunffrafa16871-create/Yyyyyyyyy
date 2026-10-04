@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kuis Agama Islam Spesial Dian Nur Aisyah & Rafa Pratama 💖</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Sacramento&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        love: {
+                            50: '#fff0f5',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                        },
+                        islamicGold: '#d4af37',
+                        pastelLavender: '#f3e8ff',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        cursive: ['Sacramento', 'cursive'],
+                        fun: ['Fredoka', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Strict Anti-Copy & Selection Lock */
+        * {
+            user-select: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            -webkit-touch-callout: none !important;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffd1dc 0%, #f3e8ff 50%, #ffe4e6 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 2px solid rgba(255, 182, 193, 0.7);
+            box-shadow: 0 20px 40px rgba(225, 29, 72, 0.12);
+        }
+
+        .btn-romantic {
+            background: linear-gradient(135deg, #f43f5e 0%, #e11d48 50%, #be123c 100%);
+            box-shadow: 0 10px 25px rgba(225, 29, 72, 0.35);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .btn-romantic:hover:not(:disabled) {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(225, 29, 72, 0.5);
+        }
+
+        .btn-romantic:active:not(:disabled) {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        .option-card {
+            transition: all 0.25s ease;
+        }
+
+        .option-card:hover {
+            transform: translateX(6px);
+            border-color: #fb7185;
+            background-color: #fff1f2;
+        }
+
+        .selected-option {
+            border-color: #e11d48 !important;
+            background-color: #ffe4e6 !important;
+            box-shadow: 0 0 15px rgba(225, 29, 72, 0.25);
+        }
+
+        .mic-pulsing {
+            animation: micPulse 1.2s infinite alternate;
+        }
+
+        @keyframes micPulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.4); }
+            100% { transform: scale(1.08); box-shadow: 0 0 0 16px rgba(225, 29, 72, 0); }
+        }
+
+        .timer-warning {
+            animation: pulseRed 0.8s infinite alternate;
+        }
+
+        @keyframes pulseRed {
+            from { color: #e11d48; transform: scale(1); }
+            to { color: #9f1239; transform: scale(1.08); }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;" oncopy="return false;" oncut="return false;" onpaste="return false;" onselectstart="return false;" class="relative flex flex-col min-h-screen justify-between items-center p-3 sm:p-6 text-gray-800">
+
+    <!-- Canvas Animated Background Hearts/Flowers -->
+    <canvas id="bgHeartsCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Navigation / Header Bar -->
+    <header class="w-full max-w-2xl flex justify-between items-center z-10 my-2">
+        <div class="flex items-center space-x-2 bg-white/85 backdrop-blur-md px-4 py-2 rounded-full border border-pink-200 shadow-sm">
+            <span class="text-xl">🌙</span>
+            <span class="font-bold text-xs sm:text-sm text-pink-700">Dian Nur Aisyah & Rafa Pratama</span>
+        </div>
+
+        <button id="audioToggleBtn" onclick="toggleBackgroundMusic()" class="bg-white/90 hover:bg-white px-3.5 py-2 rounded-full shadow-md text-pink-600 transition flex items-center space-x-1.5 border border-pink-300">
+            <span id="audioIcon" class="text-base">🎵</span>
+            <span id="audioText" class="text-xs font-bold text-pink-700">Putar Musik</span>
+        </button>
+    </header>
+
+    <main class="w-full max-w-2xl z-10 my-auto">
+
+        <!-- ================= 1. WELCOME / START SCREEN ================= -->
+        <div id="welcomeScreen" class="glass-card rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden transition-all duration-500">
+            <div class="inline-block p-4 bg-pink-100 rounded-full mb-2 animate-bounce">
+                <span class="text-5xl">🕌</span>
+            </div>
+
+            <h1 class="text-2xl sm:text-4xl font-black text-gray-800 mb-1 leading-tight">
+                Kuis Agama Islam Spesial <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-rose-600 to-purple-600">
+                    Dian Nur Aisyah 💖
+                </span>
+            </h1>
+
+            <p class="text-xs sm:text-sm text-pink-600 font-bold mb-4">
+                Dibuat Khusus dengan Cinta & Doa Oleh <span class="underline decoration-pink-400">Rafa Pratama</span> 🥰
+            </p>
+
+            <!-- Attempts Counter Badge -->
+            <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-pink-50 to-purple-50 border border-pink-300 px-4 py-1.5 rounded-full mb-4 shadow-sm">
+                <span class="text-sm">🎟️</span>
+                <span id="attemptBadgeText" class="text-xs font-extrabold text-pink-900">
+                    Sisa Kesempatan: 2 / 2 Kali Main
+                </span>
+            </div>
+
+            <!-- Anti-Cheat & Rules Box -->
+            <div class="bg-gradient-to-br from-rose-50 to-purple-50 border-2 border-pink-200 rounded-2xl p-4 mb-4 text-left space-y-2">
+                <div class="flex items-center space-x-2">
+                    <span class="text-lg">🚨</span>
+                    <h4 class="font-extrabold text-xs sm:text-sm text-rose-900">Ketentuan Kuis & Mode Anti-Nyontek Iblis:</h4>
+                </div>
+                <ul class="text-xs text-rose-800 space-y-1.5 list-disc pl-5 font-medium leading-relaxed">
+                    <li><strong>Total 20 Soal PAI</strong>: 10 Soal Suara (Bisa Bicara via Mic 🎤) + 10 Soal Pilihan Ganda (ABCD).</li>
+                    <li>Waktu Pengerjaan Total: <strong>60 Menit (1 Jam)</strong>.</li>
+                    <li><strong class="text-rose-700">MODE SANGAT ANTI-NYONTEK:</strong> Dilarang pindah tab / pindah aplikasi! <strong>Terdeteksi > 2x = OTOMATIS GAGAL SANGSI! 🚨</strong></li>
+                    <li><strong>Maksimal 2x Main</strong> per perangkat HP/Laptop.</li>
+                    <li><strong class="text-emerald-700">Jika Benar ≥ 15 Soal (Nilai ≥ 75):</strong> LULUS! Surat Cinta Rafa terbuka otomatis tanpa hukuman! 🏆</li>
+                    <li><strong class="text-rose-700">Jika Benar &lt; 15 Soal / Terkena Sangsi:</strong> Dian WAJIB mengonfirmasi kalimat sakti ke Rafa! 💖</li>
+                </ul>
+            </div>
+
+            <!-- Lock Warning Box (Attempts >= 2) -->
+            <div id="lockWarningBox" class="hidden bg-rose-100 border-2 border-rose-400 rounded-2xl p-4 mb-4 text-left shadow-md">
+                <div class="flex items-start space-x-3">
+                    <span class="text-2xl">🔒</span>
+                    <div>
+                        <h4 class="font-extrabold text-xs sm:text-sm text-rose-900">Jatah Main Dian Sudah Habis! 😜</h4>
+                        <p class="text-xs text-rose-800 mt-1 leading-relaxed">
+                            Awas nyontek! Dian sudah menggunakan 2 kali jatah main. Kuis ini dikunci Rafa biar Dian gak bisa buka AI / Google. Mau ulang? Minta PIN ke Rafa ya! 💖
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="toggleBackgroundMusic()" class="w-full py-3 bg-pink-100 hover:bg-pink-200 border-2 border-pink-300 text-pink-700 font-bold text-xs sm:text-sm rounded-2xl transition flex items-center justify-center space-x-2">
+                    <span id="heroAudioIcon">🎶</span>
+                    <span id="heroAudioText">Putar Musik Romantis Rafa</span>
+                </button>
+
+                <button id="startGameBtn" onclick="startGame()" class="btn-romantic w-full py-4 text-white font-extrabold text-base sm:text-lg rounded-2xl tracking-wider flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span id="startGameBtnText">Mulai Kuis Dian Now! 🚀</span>
+                </button>
+
+                <!-- Rafa Reset Trigger -->
+                <div class="pt-1 text-center">
+                    <button onclick="openResetModal()" class="text-[11px] font-bold text-purple-600 hover:text-purple-800 underline transition">
+                        🔑 Reset Jatah Main (Akses Rafa)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. ACTIVE QUIZ SCREEN ================= -->
+        <div id="quizScreen" class="hidden glass-card rounded-3xl p-5 sm:p-8 transition-all duration-500">
+            <!-- Header Info -->
+            <div class="flex flex-wrap justify-between items-center mb-4 pb-3 border-b border-pink-200/80 gap-2">
+                <div class="flex items-center space-x-2">
+                    <span class="bg-pink-100 text-pink-800 font-bold px-3 py-1.5 rounded-xl text-xs sm:text-sm">
+                        Soal <span id="currentQuestionNum">1</span> / 20
+                    </span>
+                    <span id="answeredCountBadge" class="bg-purple-100 text-purple-700 font-semibold px-2.5 py-1.5 rounded-xl text-xs">
+                        Terjawab: 0/20
+                    </span>
+                </div>
+
+                <!-- Timer Countdown 60 Mins -->
+                <div id="timerContainer" class="flex items-center space-x-2 bg-rose-50 border border-rose-200 px-3.5 py-1.5 rounded-2xl shadow-sm">
+                    <span class="text-lg">⏱️️</span>
+                    <span id="timerDisplay" class="font-mono font-bold text-base sm:text-lg text-rose-600">60:00</span>
+                </div>
+            </div>
+
+            <!-- Anti-Cheat Status Badge -->
+            <div id="antiCheatNotice" class="hidden bg-rose-100 border border-rose-300 text-rose-800 px-3 py-1.5 rounded-xl text-xs font-bold mb-4 flex items-center justify-between">
+                <span id="antiCheatNoticeText">🚨 Peringatan Pindah Tab! (1/2)</span>
+                <span id="cheatCountBadge" class="bg-rose-600 text-white px-2 py-0.5 rounded-md text-[10px]">1x Switch</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-pink-100 rounded-full h-2.5 mb-5 overflow-hidden">
+                <div id="progressBar" class="bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 h-2.5 rounded-full transition-all duration-300" style="width: 5%"></div>
+            </div>
+
+            <!-- Question Display Box -->
+            <div class="mb-5">
+                <span id="questionCategory" class="inline-block text-[11px] font-bold text-rose-700 bg-rose-100 px-2.5 py-1 rounded-md mb-2">
+                    Bagian 1: Soal Suara (Membaca Ayat / Surah)
+                </span>
+                <h3 id="questionText" class="text-sm sm:text-base font-bold text-gray-800 leading-relaxed min-h-[55px]">
+                    Memuat Soal...
+                </h3>
+            </div>
+
+            <!-- VOICE INPUT INTERFACE (For Questions 1-10) -->
+            <div id="voiceSection" class="hidden space-y-4 mb-6">
+                <div class="bg-gradient-to-br from-rose-50 to-pink-50 border-2 border-rose-200 p-4 rounded-2xl text-center space-y-3">
+                    <p class="text-xs text-rose-800 font-bold">
+                        🎙️ Tekan Tombol Mikrofon di Bawah & Bacakan Jawabannya!
+                    </p>
+
+                    <button id="micBtn" onclick="toggleVoiceRecognition()" class="w-20 h-20 bg-rose-500 hover:bg-rose-600 text-white rounded-full flex items-center justify-center mx-auto shadow-xl transition-all border-4 border-white text-3xl">
+                        🎤
+                    </button>
+
+                    <p id="speechStatusText" class="text-xs font-semibold text-gray-600 italic">
+                        Klik mikrofon untuk mulai bicara...
+                    </p>
+
+                    <div id="speechOutputBox" class="hidden bg-white p-3 rounded-xl border border-rose-300 text-xs font-bold text-rose-700 min-h-[40px] flex items-center justify-center">
+                        <span id="speechResultText">"..."</span>
+                    </div>
+                </div>
+
+                <!-- Fallback Text Input if Mic fails -->
+                <div class="bg-white/80 p-3 rounded-xl border border-pink-200">
+                    <label class="block text-[11px] font-bold text-gray-600 mb-1">
+                        ✍️ Ketik Ucapan Suara (Bila Mic HP Bermasalah):
+                    </label>
+                    <div class="flex space-x-2">
+                        <input type="text" id="manualTextInput" placeholder="Ketik jawaban bacaan di sini..." class="w-full text-xs px-3 py-2 border rounded-xl focus:outline-none focus:border-rose-500">
+                        <button onclick="saveManualVoiceText()" class="px-4 py-2 bg-pink-600 text-white text-xs font-bold rounded-xl hover:bg-pink-700">Simpan</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MULTIPLE CHOICE INTERFACE (ABCD For Questions 11-20) -->
+            <div id="optionsContainer" class="space-y-2.5 mb-6">
+                <!-- Dynamic Options -->
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between items-center pt-2">
+                <button id="prevBtn" onclick="prevQuestion()" class="px-4 py-2.5 rounded-xl border border-gray-300 text-gray-600 text-xs sm:text-sm font-semibold hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed">
+                    ← Sebelum
+                </button>
+
+                <button id="nextBtn" onclick="nextQuestion()" class="btn-romantic px-6 py-2.5 rounded-xl text-white text-xs sm:text-sm font-bold flex items-center space-x-2">
+                    <span id="nextBtnText">Lanjut →</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= 3A. SWEET PUNISHMENT SCREEN (Correct < 15) ================= -->
+        <div id="punishmentScreen" class="hidden glass-card rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden transition-all duration-500">
+            <div class="inline-block p-4 bg-rose-100 rounded-full mb-3 animate-bounce">
+                <span id="punishEmoji" class="text-5xl">😜</span>
+            </div>
+
+            <h2 id="punishTitle" class="text-2xl sm:text-3xl font-black text-gray-800 mb-1">
+                HUKUMAN MANIS UNTUK DIAN! 💖
+            </h2>
+            <p id="punishSubtitle" class="text-xs sm:text-sm text-pink-600 font-semibold mb-6">
+                Jawaban benar Dian belum mencapai 15 soal, jadi Dian wajib terima hukuman manis dari Rafa!
+            </p>
+
+            <!-- Score Breakdown Box -->
+            <div class="bg-gradient-to-br from-white to-pink-50 rounded-2xl p-5 border-2 border-pink-200 text-left mb-6 shadow-md">
+                <h3 class="font-bold text-xs text-pink-500 uppercase tracking-wider mb-3 text-center">
+                    -- Rekap Hasil Kuis PAI Dian --
+                </h3>
+
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-xl text-center">
+                        <span class="text-2xl">🎯</span>
+                        <p class="text-[10px] text-emerald-600 font-bold uppercase mt-1">Jawaban Benar</p>
+                        <p id="punishCorrectText" class="text-xl sm:text-2xl font-black text-emerald-700">0 / 20</p>
+                    </div>
+                    <div class="bg-rose-50 border border-rose-200 p-3 rounded-xl text-center">
+                        <span class="text-2xl">❌</span>
+                        <p class="text-[10px] text-rose-600 font-bold uppercase mt-1">Salah / Kosong</p>
+                        <p id="punishWrongText" class="text-xl sm:text-2xl font-black text-rose-700">0 / 20</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center bg-pink-100/80 p-3.5 rounded-xl border border-pink-200">
+                    <div>
+                        <p class="text-xs font-bold text-pink-800">Total Nilai Akhir:</p>
+                        <p class="text-[11px] text-pink-600 font-semibold">Status: Kena Hukuman Cinta 🥰</p>
+                    </div>
+                    <div class="text-right">
+                        <span id="punishScoreText" class="text-2xl sm:text-3xl font-black text-rose-600">0</span>
+                        <span class="text-xs font-bold text-rose-400">/ 100</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mandatory Phrase Unlock -->
+            <div class="bg-gradient-to-br from-rose-50 to-pink-100 rounded-2xl p-5 border-2 border-pink-300 text-left mb-6 shadow-sm">
+                <div class="flex items-center space-x-2 mb-2">
+                    <span class="text-2xl">📜</span>
+                    <h3 class="font-extrabold text-xs sm:text-sm text-rose-800">
+                        Syarat Wajib Buka Surat Cinta Rafa:
+                    </h3>
+                </div>
+                <p class="text-xs text-gray-700 leading-relaxed mb-3">
+                    Biar surat cinta & kado peluk Rafa terbuka, Dian <span class="font-bold text-rose-600">WAJIB</span> mengonfirmasi / mengucapkan kalimat di bawah ini:
+                </p>
+
+                <!-- Mandatory Phrase Box -->
+                <div class="bg-white p-4 rounded-xl border-2 border-rose-400 text-center shadow-md mb-3">
+                    <p class="text-[10px] text-pink-500 font-bold mb-1 uppercase tracking-wider">Kalimat Sakti Dian:</p>
+                    <p id="mandatoryPhraseText" class="text-base sm:text-xl font-black text-rose-600 tracking-wide font-fun leading-tight select-all">
+                        "DIAN SAYANG RAFA, I LOVEE YOUU RAFAA💝💞"
+                    </p>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="declareLoveSuccess()" class="btn-romantic w-full py-4 text-white font-extrabold text-sm sm:text-base rounded-2xl tracking-wide flex items-center justify-center space-x-2 animate-pulse">
+                    <span class="text-xl">💖</span>
+                    <span>Ucapkan & Buka Surat Cinta Rafa! 💖</span>
+                </button>
+
+                <button onclick="copyMandatoryPhrase()" class="w-full py-2.5 bg-white border border-pink-300 rounded-xl text-xs font-bold text-pink-700 hover:bg-pink-50 transition flex items-center justify-center space-x-1">
+                    <span>📋 Salin Kalimat Sakti</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= 3B. GENIUS VICTORY SCREEN (Correct >= 15) ================= -->
+        <div id="geniusVictoryScreen" class="hidden glass-card rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden transition-all duration-500">
+            <div class="inline-block p-4 bg-amber-100 rounded-full mb-3 animate-bounce">
+                <span class="text-5xl">👑</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-black text-gray-800 mb-1">
+                DIAN NUR AISYAH SHALEHAH & GENIUS! 🏆
+            </h2>
+            <p class="text-xs sm:text-sm text-pink-600 font-semibold mb-6">
+                MASYA ALLAH! Dian berhasil menjawab 15 atau lebih soal Agama Islam dengan BENAR! Bebas Hukuman! 🎉
+            </p>
+
+            <!-- Score Breakdown Box -->
+            <div class="bg-gradient-to-br from-emerald-50 to-white rounded-2xl p-5 border-2 border-emerald-200 text-left mb-6 shadow-md">
+                <h3 class="font-bold text-xs text-emerald-600 uppercase tracking-wider mb-3 text-center">
+                    -- Rekap Nilai Dian --
+                </h3>
+
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div class="bg-emerald-100/70 border border-emerald-300 p-3 rounded-xl text-center">
+                        <span class="text-2xl">🎯</span>
+                        <p class="text-[10px] text-emerald-700 font-bold uppercase mt-1">Jawaban Benar</p>
+                        <p id="geniusCorrectText" class="text-xl sm:text-2xl font-black text-emerald-800">15 / 20</p>
+                    </div>
+                    <div class="bg-rose-50 border border-rose-200 p-3 rounded-xl text-center">
+                        <span class="text-2xl">❌</span>
+                        <p class="text-[10px] text-rose-600 font-bold uppercase mt-1">Salah / Kosong</p>
+                        <p id="geniusWrongText" class="text-xl sm:text-2xl font-black text-rose-700">5 / 20</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center bg-emerald-100 p-3.5 rounded-xl border border-emerald-300">
+                    <div>
+                        <p class="text-xs font-bold text-emerald-900">Total Skor Akhir:</p>
+                        <p class="text-[11px] text-emerald-700 font-semibold">Predikat: Ratu Salehah Hati Rafa 💖</p>
+                    </div>
+                    <div class="text-right">
+                        <span id="geniusScoreText" class="text-2xl sm:text-3xl font-black text-emerald-700">75</span>
+                        <span class="text-xs font-bold text-emerald-500">/ 100</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 text-left mb-6">
+                <p class="text-xs text-amber-900 leading-relaxed font-semibold">
+                    ✨ Keren banget Dian! Karena nilainya ≥75%, Dian **TIDAK PERLU** dihukum ngomong apa-apa! Surat Cinta Rafa langsung terbuka otomatis! 🥰
+                </p>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="openLoveLetterDirectly()" class="btn-romantic w-full py-4 text-white font-extrabold text-sm sm:text-base rounded-2xl tracking-wide flex items-center justify-center space-x-2">
+                    <span class="text-xl">💌</span>
+                    <span>Buka Surat Cinta & Kado Rafa Sekarang! 🎉</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= 4. LOVE LETTER SCREEN ================= -->
+        <div id="loveLetterScreen" class="hidden glass-card rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden transition-all duration-700">
+            <div class="inline-block p-4 bg-rose-100 rounded-full mb-3 animate-pulse">
+                <span class="text-6xl">🥰</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl font-cursive font-bold text-rose-600 mb-1">
+                Awww, Makasih Dian Sayang! 💖
+            </h2>
+            <p id="loveLetterSubtitle" class="text-xs sm:text-sm text-gray-600 font-medium mb-6">
+                Rafa denger kok pengakuan cintanya! I love you so much Dian Nur Aisyah!
+            </p>
+
+            <div class="bg-white/95 rounded-2xl p-5 sm:p-6 text-left border-2 border-pink-200 shadow-xl space-y-4 relative mb-6">
+                <div class="flex justify-between items-center border-b border-pink-100 pb-2">
+                    <span class="font-cursive text-2xl text-rose-500">Surat Cinta Untuk Dian</span>
+                    <span class="text-xs text-pink-400 font-mono">Spesial Dari Rafa Pratama 💌</span>
+                </div>
+
+                <p class="text-xs sm:text-sm text-gray-700 leading-relaxed font-sans">
+                    Halo <strong class="text-rose-600">Dian Nur Aisyah</strong> cantikku 💕,<br><br>
+                    Makasih yaa udah mau nyobain Kuis Agama Islam buatan Rafa ini! Mau berapa pun nilainya hari ini, buat Rafa, Dian tetep dapet <strong class="text-rose-600">Nilai 100/100 di Hati Rafa!</strong> 😜❤️<br><br>
+                    Semoga ilmu kuis agama ini berkah buat kita berdua yaa. Dian itu cewek paling manis, salehah, hebat, dan berharga banget buat Rafa. Tetap jadi Dian yang Rafa sayang selamanya yaa!
+                </p>
+
+                <div class="p-3 bg-pink-50 rounded-xl border border-pink-200 text-center">
+                    <p class="text-xs font-bold text-rose-700">
+                        "DIAN SAYANG RAFA, I LOVEE YOUU RAFAA 💝💞"
+                    </p>
+                    <p class="text-[11px] text-pink-500 italic mt-1">
+                        - Janji manis Rafa buat Dian selamanya!
+                    </p>
+                </div>
+
+                <p class="text-xs text-right text-gray-500 font-semibold pt-2">
+                    Peluk & Cium Hangat,<br>
+                    <span class="font-cursive text-xl text-rose-600">Rafa Pratama 💖</span>
+                </p>
+            </div>
+
+            <button onclick="restartGame()" class="w-full py-3 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs sm:text-sm font-bold rounded-2xl shadow-lg transition">
+                🔄 Kembali ke Halaman Utama
+            </button>
+        </div>
+
+        <!-- ================= 5. RESET ATTEMPTS MODAL ================= -->
+        <div id="resetModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border-2 border-purple-200 text-center space-y-4">
+                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto text-2xl">🔑</div>
+                <h3 class="font-extrabold text-base text-purple-900">Reset Jatah Main Dian</h3>
+                <p class="text-xs text-gray-600">Masukkan PIN Rahasia Rafa untuk memberikan Dian kesempatan main lagi:</p>
+
+                <input type="password" id="rafaPinInput" placeholder="Masukkan PIN Rahasia..." class="w-full text-center px-4 py-2.5 border-2 border-purple-200 rounded-xl text-sm font-bold focus:border-purple-500 focus:outline-none">
+
+                <div class="flex space-x-2 pt-2">
+                    <button onclick="closeResetModal()" class="w-1/2 py-2.5 bg-gray-100 text-gray-600 font-bold text-xs rounded-xl hover:bg-gray-200">Batal</button>
+                    <button onclick="confirmResetAttempts()" class="w-1/2 py-2.5 bg-purple-600 text-white font-bold text-xs rounded-xl hover:bg-purple-700">Reset Now</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Toast Notification Overlay -->
+    <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-gray-900/90 text-white px-5 py-2.5 rounded-full text-xs font-semibold shadow-2xl opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center space-x-2">
+        <span id="toastIcon">✨</span>
+        <span id="toastMsg">Notifikasi</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC & STATE MANAGEMENT -->
+    <script>
+        // 20 Questions Dataset (All Islamic Religion / PAI)
+        const quizQuestions = [
+            // --- BAGIAN 1: SOAL BACAAN / SUARA (1-10) ---
+            {
+                type: 'voice',
+                category: "Bagian 1: Soal Suara (Membaca Ayat / Surah)",
+                question: "1. Surah Al-Ikhlas ayat 1: Katakanlah Dialah Allah Yang Maha Esa. Bacakan potongan ayat pertamanya!",
+                targetKeywords: ["qul huwallahu ahad", "qul hu wallahu ahad", "ahad", "qulhu", "ikhlas"],
+                sampleHint: "Contoh ucapan: Qul huwallahu ahad"
+            },
+            {
+                type: 'voice',
+                category: "Bagian 1: Soal Suara (Membaca Ayat / Surah)",
+                question: "2. Bacakan ayat pertama Surah Al-Falaq dengan jelas!",
+                targetKeywords: ["qul a'udzu birabbil falaq", "qul audzu birabbil falaq", "falaq", "rabbil falaq"],
+                sampleHint: "Contoh ucapan: Qul a'udzu birabbil falaq"
+            },
+            {
+                type: 'voice',
+                category: "Bagian 1: Soal Suara (Membaca Ayat / Surah)",
+                question: "3. Bacakan ayat pertama Surah An-Nas dengan jelas!",
+                targetKeywords: ["qul a'udzu birabbin nas", "qul audzu birabbin nas", "nas", "naas", "rabbin nas"],
+                sampleHint: "Contoh ucapan: Qul a'udzu birabbin nas"
+            },
+            {
+                type: 'voice',
+                category: "Bagian 1: Soal Suara (Membaca Ayat / Surah)",
+                question: "4. Surah Al-Kautsar ayat 1: Sungguh Kami telah memberimu nikmat yang banyak. Bacakan ayat pertamanya!",
+                targetKeywords: ["inna a'thainakakal kautsar", "inna a'thaina kal kautsar", "kautsar", "kausar"],
+                sampleHint: "Contoh ucapan: Inna a'thainakal kautsar"
+            },
+            {
+                type: 'voice',
+                category: "Bagian 1: Soal Suara (Membaca Ayat / Surah)",
+                question: "5. Bacakan ayat pertama Surah Al-Ma'un dengan jelas!",
+                targetKeywords: ["a ra'aitalladzi yukadzzibu biddin", "araitalladzi yukadzibu biddin", "araitalladzi", "yukadzibu biddin"],
+                sampleHint: "Contoh ucapan: Tahukah kamu orang yang mendustakan agama..."
+            },
+            {
+                type: 'voice',
+                category: "Bagian 1: Soal Suara (Membaca Ayat / Surah)",
+                question: "6. Bacakan ayat pertama Surah Quraysh dengan jelas!",
+                targetKeywords: ["li'ilaafi quraisy", "li ilafi quraisy", "liilafi quraisy", "quraisy"],
+                sampleHint: "Contoh ucapan: Li'ilaafi quraisy"
+            },
+            {
+                type: 'voice',
+                category: "Bagian 1: Soal Suara (Membaca Ayat / Surah)",
+                question: "7. Bacakan ayat pertama Surah Al-Fil tentang pasukan gajah!",
+                targetKeywords: ["alam tara kaifa fa'ala rabbuka bi'ashabil fil", "bi ashabil fil", "fil", "alam tara"],
+                sampleHint: "Contoh ucapan: Alam tara kaifa fa'ala rabbuka bi'ashabil fil"
+            },
+            {
+                type: 'voice',
+                category: "Bagian 1: Soal Suara (Membaca Ayat / Surah)",
+                question: "8. Bacakan ayat pertama Surah Al-'Ashr dengan jelas!",
+                targetKeywords: ["wal 'ashr", "wal ashr", "ashr", "asar"],
+                sampleHint: "Contoh ucapan: Wal 'ashr"
+            },
+            {
+                type: 'voice',
+                category: "Bagian 1: Soal Suara (Membaca Ayat / Surah)",
+                question: "9. Bacakan ayat pertama Surah At-Takatsur dengan jelas!",
+                targetKeywords: ["al hakumut takatsur", "alhakumut takasur", "takatsur", "takasur"],
+                sampleHint: "Contoh ucapan: Al-haakumut takaatsur"
+            },
+            {
+                type: 'voice',
+                category: "Bagian 1: Soal Suara (Membaca Ayat / Surah)",
+                question: "10. Surah An-Nasr ayat 1: Apabila telah datang pertolongan Allah dan kemenangan. Bacakan ayat pertamanya!",
+                targetKeywords: ["idza ja'a nasrullahi wal fath", "nasrullahi wal fath", "nasrullah", "idza jaa"],
+                sampleHint: "Contoh ucapan: Idza jaa'a nasrullahi wal fath"
+            },
+
+            // --- BAGIAN 2: SOAL PILIHAN GANDA ABCD (11-20) ---
+            {
+                type: 'mcq',
+                category: "Bagian 2: Pilihan Ganda (Rukun Iman & Islam)",
+                question: "11. Rukun Iman ke-5 yang wajib diyakini oleh setiap umat Islam adalah iman kepada...",
+                options: [
+                    "A. Hari Kiamat",
+                    "B. Qada dan Qadar",
+                    "C. Kitab-Kitab Allah",
+                    "D. Malaikat-Malaikat Allah"
+                ],
+                correctIndex: 0
+            },
+            {
+                type: 'mcq',
+                category: "Bagian 2: Pilihan Ganda (Rukun Iman & Islam)",
+                question: "12. Ibadah puasa di bulan suci Ramadan termasuk dalam urutan Rukun Islam yang ke-...",
+                options: [
+                    "A. Ke-2",
+                    "B. Ke-3",
+                    "C. Ke-4",
+                    "D. Ke-5"
+                ],
+                correctIndex: 1
+            },
+            {
+                type: 'mcq',
+                category: "Bagian 2: Pilihan Ganda (Sejarah Nabi)",
+                question: "13. Nabi Muhammad SAW lahir pada tanggal 12 Rabiul Awwal yang dikenal juga dengan sebutan 'Tahun Gajah'. Mengapa dinamakan Tahun Gajah?",
+                options: [
+                    "A. Karena banyak gajah lahir di kota Makkah",
+                    "B. Karena ada pasukan gajah Raja Abrahah yang hendak menghancurkan Ka'bah",
+                    "C. Karena Raja Makkah memelihara gajah",
+                    "D. Karena gajah menjadi tunggangan Nabi"
+                ],
+                correctIndex: 1
+            },
+            {
+                type: 'mcq',
+                category: "Bagian 2: Pilihan Ganda (Tajwid)",
+                question: "14. Apabila Nun Mati (نْ) atau Tanwin bertemu dengan huruf 'Ba' (ب), maka hukum bacaan tajwidnya dinamakan...",
+                options: [
+                    "A. Idgham Bigunnah",
+                    "B. Idzhar Halqi",
+                    "C. Iqlab",
+                    "D. Ikhfa Haqiqi"
+                ],
+                correctIndex: 2
+            },
+            {
+                type: 'mcq',
+                category: "Bagian 2: Pilihan Ganda (Keutamaan Ibadah)",
+                question: "15. Salat sunnah dua rakaat yang sangat dianjurkan dikerjakan sebelum salat Subuh memiliki keutamaan luar biasa, yaitu...",
+                options: [
+                    "A. Lebih baik dari dunia dan seisinya",
+                    "B. Menghapus dosa selama 10 tahun",
+                    "C. Diangkat menjadi raja di akhirat",
+                    "D. Mendapat pahala ibadah haji 100 kali"
+                ],
+                correctIndex: 0
+            },
+            {
+                type: 'mcq',
+                category: "Bagian 2: Pilihan Ganda (Sejarah Nabi & Rasul)",
+                question: "16. Rasulullah SAW yang diberikan mukjizat selamat dan tidak terbakar sama sekali oleh kobaran api raja Namrud adalah...",
+                options: [
+                    "A. Nabi Musa AS",
+                    "B. Nabi Ibrahim AS",
+                    "C. Nabi Isa AS",
+                    "D. Nabi Yunus AS"
+                ],
+                correctIndex: 1
+            },
+            {
+                type: 'mcq',
+                category: "Bagian 2: Pilihan Ganda (Zakat)",
+                question: "17. Zakat jiwa yang wajib dikeluarkan oleh setiap muslim di akhir bulan Ramadan sebelum pelaksanaan salat Idulfitri disebut...",
+                options: [
+                    "A. Zakat Mal",
+                    "B. Zakat Fitrah",
+                    "C. Zakat Niaga",
+                    "D. Zakat An'am"
+                ],
+                correctIndex: 1
+            },
+            {
+                type: 'mcq',
+                category: "Bagian 2: Pilihan Ganda (Sifat Wajib Allah)",
+                question: "18. Allah SWT memiliki sifat wajib 'Al-Baqa' (البقاء) yang artinya...",
+                options: [
+                    "A. Maha Ada",
+                    "B. Maha Kekal",
+                    "C. Maha Mendorong",
+                    "D. Maha Berbeda dengan Makhluk"
+                ],
+                correctIndex: 1
+            },
+            {
+                type: 'mcq',
+                category: "Bagian 2: Pilihan Ganda (Malaikat & Tugasnya)",
+                question: "19. Malaikat yang bertugas menyampaikan wahyu dari Allah SWT kepada para Nabi dan Rasul adalah Malaikat...",
+                options: [
+                    "A. Malaikat Mikail",
+                    "B. Malaikat Israfil",
+                    "C. Malaikat Jibril",
+                    "D. Malaikat Izrail"
+                ],
+                correctIndex: 2
+            },
+            {
+                type: 'mcq',
+                category: "Bagian 2: Pilihan Ganda (Kitab Suci)",
+                question: "20. Kitab suci Injil diturunkan oleh Allah SWT kepada Rasul-Nya, yaitu...",
+                options: [
+                    "A. Nabi Musa AS",
+                    "B. Nabi Daud AS",
+                    "C. Nabi Isa AS",
+                    "D. Nabi Muhammad SAW"
+                ],
+                correctIndex: 2
+            }
+        ];
+
+        // Global State Variables
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(quizQuestions.length).fill(null);
+        let timerSeconds = 60 * 60; // 60 Minutes (1 Hour)
+        let timerInterval = null;
+        let isAudioPlaying = false;
+        let audioCtx = null;
+        let bgMusicTimer = null;
+        let tabSwitchCount = 0;
+        let isRecognizingSpeech = false;
+        let speechRecognitionInstance = null;
+        const MAX_ATTEMPTS = 2;
+
+        // STRICT ANTI-CHEATING LISTENERS (Anti-Nyontek Mode Iblis)
+        document.addEventListener("visibilitychange", function() {
+            handleAntiCheatDetection();
+        });
+
+        window.addEventListener("blur", function() {
+            handleAntiCheatDetection();
+        });
+
+        // Prevent Shortcut Keys (F12, Ctrl+C, Ctrl+U, Ctrl+Shift+I)
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "F12" || 
+               (e.ctrlKey && (e.key === "c" || e.key === "u" || e.key === "s" || e.key === "a")) || 
+               (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C"))) {
+                e.preventDefault();
+                showToast("Dilarang menggunakan shortcut! 😜", "🚨");
+            }
+        });
+
+        function handleAntiCheatDetection() {
+            const quizScreen = document.getElementById('quizScreen');
+            if (quizScreen && !quizScreen.classList.contains('hidden')) {
+                tabSwitchCount++;
+
+                const antiCheatNotice = document.getElementById('antiCheatNotice');
+                const antiCheatNoticeText = document.getElementById('antiCheatNoticeText');
+                const cheatCountBadge = document.getElementById('cheatCountBadge');
+
+                if (antiCheatNotice) antiCheatNotice.classList.remove('hidden');
+                if (cheatCountBadge) cheatCountBadge.textContent = `${tabSwitchCount}x Switch`;
+
+                if (tabSwitchCount === 1) {
+                    if (antiCheatNoticeText) antiCheatNoticeText.textContent = "🚨 PERINGATAN 1: Pindah Tab/App Terdeteksi! 1x Lagi Langsung GAGAL!";
+                    showToast("🚨 PERINGATAN 1: Jangan Nyontek/Pindah App! 1x Lagi Langsung GAGAL!", "⚠");
+                } else if (tabSwitchCount >= 2) {
+                    // INSTANT DISQUALIFICATION / FAILURE
+                    if (timerInterval) clearInterval(timerInterval);
+                    showToast("🚨 DISKLARIFIKASI! Terdeteksi Nyontek Pindah Tab 2x! Dian KALAH! 😜", "❌");
+                    setTimeout(() => {
+                        triggerAntiCheatDisqualification();
+                    }, 800);
+                }
+            }
+        }
+
+        function triggerAntiCheatDisqualification() {
+            document.getElementById('quizScreen').classList.add('hidden');
+            
+            // Render punishment screen with Cheat Fail notice
+            document.getElementById('punishEmoji').textContent = "🚨";
+            document.getElementById('punishTitle').textContent = "KETAHUAN NYONTEK 2X!";
+            document.getElementById('punishSubtitle').textContent = "Dian terdeteksi keluar kuis / pindah aplikasi 2 kali! Otomatis DIBATALKAN & KALAH SANGSI!";
+
+            document.getElementById('punishCorrectText').textContent = "0 / 20";
+            document.getElementById('punishWrongText').textContent = "20 / 20";
+            document.getElementById('punishScoreText').textContent = "0";
+
+            document.getElementById('punishmentScreen').classList.remove('hidden');
+        }
+
+        // ATTEMPTS MANAGEMENT (localStorage)
+        function getAttemptsCount() {
+            return parseInt(localStorage.getItem('dian_islamic_quiz_attempts_v3') || '0');
+        }
+
+        function incrementAttemptsCount() {
+            const current = getAttemptsCount();
+            localStorage.setItem('dian_islamic_quiz_attempts_v3', (current + 1).toString());
+            checkAttemptsUI();
+        }
+
+        function checkAttemptsUI() {
+            const attempts = getAttemptsCount();
+            const remaining = Math.max(0, MAX_ATTEMPTS - attempts);
+
+            const badgeText = document.getElementById('attemptBadgeText');
+            if (badgeText) {
+                badgeText.textContent = `Sisa Kesempatan: ${remaining} / ${MAX_ATTEMPTS} Kali Main`;
+            }
+
+            const startBtn = document.getElementById('startGameBtn');
+            const startBtnText = document.getElementById('startGameBtnText');
+            const lockBox = document.getElementById('lockWarningBox');
+
+            if (attempts >= MAX_ATTEMPTS) {
+                if (startBtn) startBtn.disabled = true;
+                if (startBtnText) startBtnText.textContent = "🔒 Jatah Main Habis! (Maks 2x)";
+                if (lockBox) lockBox.classList.remove('hidden');
+            } else {
+                if (startBtn) startBtn.disabled = false;
+                if (startBtnText) startBtnText.textContent = "Mulai Kuis Dian Now! 🚀";
+                if (lockBox) lockBox.classList.add('hidden');
+            }
+        }
+
+        // AUDIO SYNTHESIZER (Web Audio API)
+        function initAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playSound(type) {
+            try {
+                initAudioContext();
+                if (!audioCtx) return;
+
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                const now = audioCtx.currentTime;
+
+                if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.exponentialRampToValueAtTime(783.99, now + 0.08);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.08);
+                    osc.start(now);
+                    osc.stop(now + 0.08);
+                } else if (type === 'fanfare') {
+                    const notes = [523.25, 659.25, 783.99, 1046.50];
+                    notes.forEach((freq, idx) => {
+                        const subOsc = audioCtx.createOscillator();
+                        const subGain = audioCtx.createGain();
+                        subOsc.type = 'sine';
+                        subOsc.frequency.setValueAtTime(freq, now + idx * 0.1);
+                        subGain.gain.setValueAtTime(0.12, now + idx * 0.1);
+                        subGain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.1 + 1.2);
+                        subOsc.connect(subGain);
+                        subGain.connect(audioCtx.destination);
+                        subOsc.start(now + idx * 0.1);
+                        subOsc.stop(now + idx * 0.1 + 1.2);
+                    });
+                }
+            } catch (e) {}
+        }
+
+        function toggleBackgroundMusic() {
+            initAudioContext();
+            isAudioPlaying = !isAudioPlaying;
+            updateAudioUI(isAudioPlaying);
+
+            if (isAudioPlaying) {
+                showToast("🎵 Musik Romantis Rafa Nyala!", "💖");
+                startRomanticSynthLoop();
+            } else {
+                showToast("🔇 Musik Dimatikan", "💤");
+                stopRomanticSynthLoop();
+            }
+        }
+
+        function updateAudioUI(playing) {
+            const btnIcon = document.getElementById('audioIcon');
+            const btnText = document.getElementById('audioText');
+            const heroIcon = document.getElementById('heroAudioIcon');
+            const heroText = document.getElementById('heroAudioText');
+
+            if (playing) {
+                if (btnIcon) btnIcon.textContent = "🔊";
+                if (btnText) btnText.textContent = "Matikan Musik";
+                if (heroIcon) heroIcon.textContent = "💖";
+                if (heroText) heroText.textContent = "Musik Berputar 💕 (Klik Buat Jeda)";
+            } else {
+                if (btnIcon) btnIcon.textContent = "🎵";
+                if (btnText) btnText.textContent = "Putar Musik";
+                if (heroIcon) heroIcon.textContent = "🎶";
+                if (heroText) heroText.textContent = "Putar Musik Romantis Rafa";
+            }
+        }
+
+        function startRomanticSynthLoop() {
+            if (bgMusicTimer) clearInterval(bgMusicTimer);
+            const melodySequence = [
+                { f: 261.63, d: 0.5 }, { f: 329.63, d: 0.5 }, { f: 392.00, d: 0.5 }, { f: 493.88, d: 0.8 },
+                { f: 220.00, d: 0.5 }, { f: 261.63, d: 0.5 }, { f: 329.63, d: 0.5 }, { f: 392.00, d: 0.8 },
+                { f: 174.61, d: 0.5 }, { f: 220.00, d: 0.5 }, { f: 261.63, d: 0.5 }, { f: 349.23, d: 0.8 },
+                { f: 196.00, d: 0.5 }, { f: 246.94, d: 0.5 }, { f: 293.66, d: 0.5 }, { f: 392.00, d: 0.8 }
+            ];
+            let step = 0;
+
+            bgMusicTimer = setInterval(() => {
+                if (!isAudioPlaying || !audioCtx) return;
+                try {
+                    const note = melodySequence[step % melodySequence.length];
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(note.f, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.035, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + note.d);
+
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + note.d);
+                    step++;
+                } catch(e){}
+            }, 550);
+        }
+
+        function stopRomanticSynthLoop() {
+            if (bgMusicTimer) clearInterval(bgMusicTimer);
+        }
+
+        // WEB SPEECH API (VOICE RECOGNITION)
+        function toggleVoiceRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if (!SpeechRecognition) {
+                showToast("Browser/HP Dian belum mendukung mikrofon otomatis. Gunakan kolom ketik manual di bawah ya!", "⚠️");
+                return;
+            }
+
+            const micBtn = document.getElementById('micBtn');
+            const speechStatusText = document.getElementById('speechStatusText');
+            const speechOutputBox = document.getElementById('speechOutputBox');
+            const speechResultText = document.getElementById('speechResultText');
+
+            if (isRecognizingSpeech && speechRecognitionInstance) {
+                speechRecognitionInstance.stop();
+                return;
+            }
+
+            try {
+                speechRecognitionInstance = new SpeechRecognition();
+                speechRecognitionInstance.lang = 'id-ID'; // Indonesian voice recognition
+                speechRecognitionInstance.interimResults = false;
+                speechRecognitionInstance.maxAlternatives = 1;
+
+                speechRecognitionInstance.onstart = function() {
+                    isRecognizingSpeech = true;
+                    micBtn.classList.add('mic-pulsing', 'bg-emerald-500');
+                    micBtn.classList.remove('bg-rose-500');
+                    speechStatusText.textContent = "Mendengarkan ucapan Dian... Bicara sekarang! 🎙️";
+                };
+
+                speechRecognitionInstance.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript.toLowerCase();
+                    speechOutputBox.classList.remove('hidden');
+                    speechResultText.textContent = `"${transcript}"`;
+
+                    userAnswers[currentQuestionIndex] = transcript;
+                    speechStatusText.textContent = "Ucapan berhasil direkam! 💖";
+                    showToast("Ucapan Dian tersimpan!", "🎙️");
+                    renderQuestion();
+                };
+
+                speechRecognitionInstance.onerror = function(event) {
+                    isRecognizingSpeech = false;
+                    micBtn.classList.remove('mic-pulsing', 'bg-emerald-500');
+                    micBtn.classList.add('bg-rose-500');
+                    speechStatusText.textContent = "Mic tidak menangkap suara. Coba lagi atau ketik manual!";
+                };
+
+                speechRecognitionInstance.onend = function() {
+                    isRecognizingSpeech = false;
+                    micBtn.classList.remove('mic-pulsing', 'bg-emerald-500');
+                    micBtn.classList.add('bg-rose-500');
+                };
+
+                speechRecognitionInstance.start();
+            } catch (err) {
+                showToast("Gagal membuka mic. Silakan gunakan ketikan di bawah!", "⚠️");
+            }
+        }
+
+        function saveManualVoiceText() {
+            playSound('click');
+            const text = document.getElementById('manualTextInput').value.trim();
+            if (text.length > 0) {
+                userAnswers[currentQuestionIndex] = text.toLowerCase();
+                const speechOutputBox = document.getElementById('speechOutputBox');
+                const speechResultText = document.getElementById('speechResultText');
+
+                speechOutputBox.classList.remove('hidden');
+                speechResultText.textContent = `"${text}"`;
+                showToast("Teks ucapan tersimpan!", "✍️");
+                renderQuestion();
+            } else {
+                showToast("Isi teks jawaban terlebih dahulu!", "⚠️");
+            }
+        }
+
+        // GAME CONTROLLER & TIMER
+        function startGame() {
+            if (getAttemptsCount() >= MAX_ATTEMPTS) {
+                showToast("Jatah main Dian sudah habis! Gak boleh nyontek 😜", "🔒");
+                return;
+            }
+
+            playSound('click');
+            if (!isAudioPlaying) toggleBackgroundMusic();
+
+            incrementAttemptsCount();
+
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            document.getElementById('quizScreen').classList.remove('hidden');
+
+            timerSeconds = 60 * 60; // 60 Minutes (1 Hour)
+            currentQuestionIndex = 0;
+            tabSwitchCount = 0;
+            userAnswers.fill(null);
+
+            const antiCheatNotice = document.getElementById('antiCheatNotice');
+            if (antiCheatNotice) antiCheatNotice.classList.add('hidden');
+
+            startTimer();
+            renderQuestion();
+            showToast("Kuis Agama Dimulai! 20 Soal Waktu 60 Menit ⏱️", "🕌");
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            const timerDisplay = document.getElementById('timerDisplay');
+            const timerContainer = document.getElementById('timerContainer');
+
+            timerInterval = setInterval(() => {
+                timerSeconds--;
+
+                if (timerSeconds <= 300) { // Last 5 mins
+                    timerContainer.classList.add('timer-warning');
+                } else {
+                    timerContainer.classList.remove('timer-warning');
+                }
+
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.textContent = "00:00";
+                    calculateAndShowResult();
+                    return;
+                }
+
+                const minutes = Math.floor(timerSeconds / 60);
+                const seconds = timerSeconds % 60;
+                timerDisplay.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            }, 1000);
+        }
+
+        function renderQuestion() {
+            const q = quizQuestions[currentQuestionIndex];
+
+            document.getElementById('currentQuestionNum').textContent = currentQuestionIndex + 1;
+            document.getElementById('questionCategory').textContent = q.category;
+            document.getElementById('questionText').textContent = q.question;
+
+            const progressPct = ((currentQuestionIndex + 1) / quizQuestions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progressPct}%`;
+
+            const answeredCount = userAnswers.filter(a => a !== null).length;
+            document.getElementById('answeredCountBadge').textContent = `Terjawab: ${answeredCount}/20`;
+
+            const voiceSection = document.getElementById('voiceSection');
+            const optionsContainer = document.getElementById('optionsContainer');
+
+            if (q.type === 'voice') {
+                // Render Voice Interface
+                optionsContainer.innerHTML = '';
+                voiceSection.classList.remove('hidden');
+
+                const currentSaved = userAnswers[currentQuestionIndex];
+                const speechOutputBox = document.getElementById('speechOutputBox');
+                const speechResultText = document.getElementById('speechResultText');
+                const manualTextInput = document.getElementById('manualTextInput');
+
+                if (currentSaved) {
+                    speechOutputBox.classList.remove('hidden');
+                    speechResultText.textContent = `"${currentSaved}"`;
+                    manualTextInput.value = currentSaved;
+                } else {
+                    speechOutputBox.classList.add('hidden');
+                    manualTextInput.value = '';
+                }
+            } else {
+                // Render Multiple Choice (ABCD)
+                voiceSection.classList.add('hidden');
+                optionsContainer.innerHTML = '';
+
+                q.options.forEach((opt, idx) => {
+                    const isSelected = userAnswers[currentQuestionIndex] === idx;
+                    const optBtn = document.createElement('button');
+                    optBtn.className = `option-card w-full text-left p-3 sm:p-3.5 rounded-2xl border-2 transition-all flex items-center space-x-3 bg-white/90 ${
+                        isSelected ? 'selected-option' : 'border-pink-100 hover:border-pink-300'
+                    }`;
+                    optBtn.onclick = () => selectOption(idx);
+
+                    optBtn.innerHTML = `
+                        <span class="w-7 h-7 rounded-xl font-bold flex items-center justify-center text-xs ${
+                            isSelected ? 'bg-rose-500 text-white' : 'bg-pink-100 text-pink-700'
+                        }">${String.fromCharCode(65 + idx)}</span>
+                        <span class="text-xs sm:text-sm font-semibold text-gray-700 flex-1">${opt}</span>
+                    `;
+                    optionsContainer.appendChild(optBtn);
+                });
+            }
+
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+            const nextBtnText = document.getElementById('nextBtnText');
+            nextBtnText.textContent = currentQuestionIndex === quizQuestions.length - 1 ? "Kirim Jawaban Dian 💌" : "Lanjut →";
+        }
+
+        function selectOption(index) {
+            playSound('click');
+            userAnswers[currentQuestionIndex] = index;
+            renderQuestion();
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                playSound('click');
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            playSound('click');
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                calculateAndShowResult();
+            }
+        }
+
+        // EVALUATION & RESULT LOGIC
+        function calculateAndShowResult() {
+            if (timerInterval) clearInterval(timerInterval);
+
+            let correctCount = 0;
+            let wrongCount = 0;
+
+            userAnswers.forEach((ans, idx) => {
+                const q = quizQuestions[idx];
+                if (q.type === 'voice') {
+                    if (ans && typeof ans === 'string') {
+                        const isMatched = q.targetKeywords.some(kw => ans.toLowerCase().includes(kw));
+                        if (isMatched) {
+                            correctCount++;
+                        } else {
+                            wrongCount++;
+                        }
+                    } else {
+                        wrongCount++;
+                    }
+                } else {
+                    if (ans === q.correctIndex) {
+                        correctCount++;
+                    } else {
+                        wrongCount++;
+                    }
+                }
+            });
+
+            const finalScore = Math.round((correctCount / quizQuestions.length) * 100);
+
+            document.getElementById('quizScreen').classList.add('hidden');
+            document.getElementById('welcomeScreen').classList.add('hidden');
+
+            // CONDITIONAL ROUTING:
+            // Correct >= 15 (>= 75%): PASSED WITHOUT PUNISHMENT
+            // Correct < 15 (< 75%): PUNISHMENT MANDATORY PHRASE
+            if (correctCount >= 15) {
+                document.getElementById('geniusCorrectText').textContent = `${correctCount} / 20`;
+                document.getElementById('geniusWrongText').textContent = `${wrongCount} / 20`;
+                document.getElementById('geniusScoreText').textContent = finalScore;
+
+                document.getElementById('geniusVictoryScreen').classList.remove('hidden');
+                triggerRomanticConfetti();
+                playSound('fanfare');
+                showToast(`MASYA ALLAH! Jawaban Benar Dian: ${correctCount}/20! 🎉`, "🏆");
+            } else {
+                document.getElementById('punishEmoji').textContent = "😜";
+                document.getElementById('punishTitle').textContent = "HUKUMAN MANIS UNTUK DIAN! 💖";
+                document.getElementById('punishSubtitle').textContent = "Jawaban benar Dian belum mencapai 15 soal, jadi Dian wajib terima hukuman manis dari Rafa!";
+
+                document.getElementById('punishCorrectText').textContent = `${correctCount} / 20`;
+                document.getElementById('punishWrongText').textContent = `${wrongCount} / 20`;
+                document.getElementById('punishScoreText').textContent = finalScore;
+
+                document.getElementById('punishmentScreen').classList.remove('hidden');
+                showToast(`Jawaban Benar: ${correctCount}/20. Dian Kena Hukuman Manis! 😜`, "💖");
+            }
+        }
+
+        function declareLoveSuccess() {
+            playSound('fanfare');
+            triggerRomanticConfetti();
+
+            document.getElementById('punishmentScreen').classList.add('hidden');
+            document.getElementById('loveLetterSubtitle').textContent = "Makasih ya Dian sayang udah mengonfirmasi pengakuan cintanya! I love you so much!";
+            document.getElementById('loveLetterScreen').classList.remove('hidden');
+        }
+
+        function openLoveLetterDirectly() {
+            playSound('fanfare');
+            triggerRomanticConfetti();
+
+            document.getElementById('geniusVictoryScreen').classList.add('hidden');
+            document.getElementById('loveLetterSubtitle').textContent = "Selamat Dian Ratu Salehah Rafa! Surat Cinta & Kado Khusus Terbuka Buat Dian!";
+            document.getElementById('loveLetterScreen').classList.remove('hidden');
+        }
+
+        function copyMandatoryPhrase() {
+            playSound('click');
+            const textToCopy = "DIAN SAYANG RAFA, I LOVEE YOUU RAFAA💝💞";
+
+            const tempInput = document.createElement('textarea');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast("Kalimat sakti disalin! 📋", "💕");
+        }
+
+        // RESET ATTEMPTS MODAL WITH EXACT NEW PIN
+        function openResetModal() {
+            playSound('click');
+            document.getElementById('rafaPinInput').value = '';
+            document.getElementById('resetModal').classList.remove('hidden');
+        }
+
+        function closeResetModal() {
+            playSound('click');
+            document.getElementById('resetModal').classList.add('hidden');
+        }
+
+        function confirmResetAttempts() {
+            const pin = document.getElementById('rafaPinInput').value;
+            // EXACT PIN MATCH REQUIREMENT: "Sayang Rafa, Kasih Jatah Main"
+            if (pin === 'Sayang Rafa, Kasih Jatah Main') {
+                localStorage.setItem('dian_islamic_quiz_attempts_v3', '0');
+                checkAttemptsUI();
+                closeResetModal();
+                showToast("Jatah main Dian berhasil di-reset oleh Rafa! 🎉", "🔑");
+            } else {
+                showToast("PIN Rahasia Salah! Cuma Rafa yang tahu 😜", "❌");
+            }
+        }
+
+        function restartGame() {
+            playSound('click');
+            document.getElementById('loveLetterScreen').classList.add('hidden');
+            document.getElementById('geniusVictoryScreen').classList.add('hidden');
+            document.getElementById('punishmentScreen').classList.add('hidden');
+            document.getElementById('welcomeScreen').classList.remove('hidden');
+            checkAttemptsUI();
+        }
+
+        function showToast(msg, icon = "✨") {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            document.getElementById('toastIcon').textContent = icon;
+
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 3200);
+        }
+
+        // BACKGROUND ANIMATED PARTICLES (HEARTS/FLOWERS)
+        const canvas = document.getElementById('bgHeartsCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class HeartParticle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 50;
+                this.size = Math.random() * 12 + 6;
+                this.speedY = Math.random() * 1.5 + 0.8;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.opacity = Math.random() * 0.6 + 0.2;
+                this.color = ['#f43f5e', '#fb7185', '#d4af37', '#e11d48', '#c084fc'][Math.floor(Math.random() * 5)];
+            }
+
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < -20) this.reset();
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                const x = this.x;
+                const y = this.y;
+                const size = this.size;
+                ctx.moveTo(x, y);
+                ctx.bezierCurveTo(x - size / 2, y - size / 2, x - size, y + size / 3, x, y + size);
+                ctx.bezierCurveTo(x + size, y + size / 3, x + size / 2, y - size / 2, x, y);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.min(Math.floor(window.innerWidth / 20), 40);
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new HeartParticle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        function triggerRomanticConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 110,
+                    spread: 85,
+                    origin: { y: 0.6 },
+                    colors: ['#f43f5e', '#fb7185', '#d4af37', '#ffffff', '#e879f9']
+                });
+
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 70,
+                        angle: 60,
+                        spread: 60,
+                        origin: { x: 0 }
+                    });
+                    confetti({
+                        particleCount: 70,
+                        angle: 120,
+                        spread: 60,
+                        origin: { x: 1 }
+                    });
+                }, 300);
+            }
+        }
+
+        window.onload = function() {
+            initParticles();
+            animateParticles();
+            checkAttemptsUI();
+        };
+    </script>
+</body>
+</html>
